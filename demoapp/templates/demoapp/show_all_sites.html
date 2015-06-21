@@ -1,0 +1,13 @@
+{% extends "demoapp/base.html" %}
+{% block content %}
+	<h1>Sites</h1>
+	<ul class="list-group">
+	{% for site in sites %}
+		<li class="list-group-item">
+			<a href="">{{ site.name }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock content %}	
+	
+

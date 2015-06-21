@@ -18,12 +18,12 @@ def site_details(request, pk):
 	
 	
 def summary(request):
-	
-	# calculating the count of website
-	site_count = Site.objects.raw('SELECT id, COUNT(name) AS count FROM demoapp_site GROUP BY `name`')
 	sites = Site.objects.values('name').annotate(sum_a=Sum('a_val'),sum_b=Sum('b_val'))
-	#for s in sites:
-	#	print "\nAMIT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%s %d %d" %(s['name'], s['sum_a'],s['sum_b'])
-	
 	return render(request, 'demoapp/summary.html', {'sites':sites})
+
+def summary_average(request):
+	sites = Site.objects.raw('SELECT id, name, AVG(a_val) AS a_v, AVG(b_val) AS b_v FROM demoapp_site GROUP BY `name`')
+	#for s in sites:
+	#	print "\nAMIT ++++++++++++++++++%s ----%.2f --- %.2f" %(s.name, s.a_v, s.b_v)
+	return render(request, 'demoapp/summary_average.html', {'sites':sites})
 # Create your views here.

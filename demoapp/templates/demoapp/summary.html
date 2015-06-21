@@ -1,0 +1,47 @@
+{% extends "demoapp/base.html" %}
+
+{% block content %}
+	<h1>Summary</h1>      
+	<a href="/summary">
+		<button type="button" class="btn btn-primary active">Sum</button>
+	</a>
+	<a href="/summary-average">
+		<button type="button" class="btn btn-primary active">Average</button>
+	</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>
+					<strong>Site</strong>
+				</td>
+				<td>
+					<strong>A Value</strong>
+				</td>
+				<td>
+					<strong>B Value</strong>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for site in sites %}
+				<tr>
+					<td>
+						{{ site.name }}
+					</td>
+					<td>
+						{{ site.sum_a }}
+					</td>
+					<td>
+						{{ site.sum_b }}
+					</td>
+				</tr>
+			{% endfor %}				
+		</tbody>
+	</table>
+{% endblock content %}
+
+	
+	
+
+
+

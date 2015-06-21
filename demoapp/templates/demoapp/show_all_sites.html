@@ -2,13 +2,14 @@
 {% block content %}
 	<h1>Sites</h1>
 	<ul class="list-group">
-	{% for site in sites %}
-		<li class="list-group-item">
-			<a href="">{{ site.name }}</a>
-			<a href="">{{ site.a_val}}</a>
-		</li>
-	{% endfor %}
+		{% for site in sites %}
+			<li class="list-group-item">
+				<a href="{% url "demoapp.views.site_details" pk=site.pk %}">{{ site.name }}</a>
+			</li>
+		{% endfor %}
 	</ul>
 {% endblock content %}	
 	
+
+
 

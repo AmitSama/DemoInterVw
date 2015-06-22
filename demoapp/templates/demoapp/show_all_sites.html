@@ -4,7 +4,7 @@
 	<ul class="list-group">
 		{% for site in sites %}
 			<li class="list-group-item">
-				<a href="{% url "demoapp.views.site_details" pk=site.pk %}">{{ site.name }}</a>
+				<a href="{% url "demoapp.views.details" pk=site.pk %}">{{ site.name }}</a>
 			</li>
 		{% endfor %}
 	</ul>

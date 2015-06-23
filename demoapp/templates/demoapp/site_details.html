@@ -1,3 +1,27 @@
 {% extends "demoapp/base.html" %}
 
-<h1>HI AMIT</h1>      
+{% block content %}
+	<div class="container">
+		{% for site in sites|slice:":1" %}
+			<h1>Site Details - {{ site.name }}</h1>
+		{% endfor %}	
+		<table class="table">
+			<thead>
+				<tr>
+					<td><strong>Date</strong></td>
+					<td><strong>A Value</strong></td>
+					<td><strong>B Value</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for site in sites %}   
+					<tr>
+						<td>{{ site.created_date }}</td>
+						<td>{{ site.a_val }}</td>
+						<td>{{ site.b_val }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock content %} 

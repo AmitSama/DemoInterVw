@@ -6,13 +6,11 @@ from django.db.models import Sum
 import sys
 
 def show_all_sites(request):
-	#print "\n\nInside show_all_sites============================================================================================================="
 	sites = Site.objects.raw('SELECT * FROM demoapp_site GROUP BY `name` ORDER BY `created_date`')
 	return render(request, 'demoapp/show_all_sites.html',{'sites':sites})
 	
 	
 def details(request, pk):
-	#print "Inside details %d=========================================================================================" %pk
 	site = get_object_or_404(Site, pk=pk)	
 	sites = Site.objects.filter(name=site.name).order_by('created_date')
 	return render(request, 'demoapp/site_details.html', {'sites':sites})
